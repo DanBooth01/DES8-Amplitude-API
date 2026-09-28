@@ -39,15 +39,28 @@ s3_client = boto3.client(
 
 files_to_upload = os.listdir('data')
 
+
+#List all items in S3 bucket
+objects = s3_client.list_objects_v2(Bucket= AWS_BUCKET_NAME)
+
+files_in_bucket= []
+
+for obj in objects['Contents']:
+    files_in_bucket.append(obj['Key'])
+
+#Upload files that aren't in s3 bucket:
 for file in files_to_upload:
     file_to_upload = f'data/{file}'
     filename_s3 = file
-    try:
-        s3_client.upload_file(file_to_upload, AWS_BUCKET_NAME, filename_s3)
-        print(f'{file} uploaded successfully')
-        logger.info(f'{file} uploaded successfully')
-        os.remove(file_to_upload)
-    except Exception as e:
-        print(f'An error has occured: {e}')
-        logger.error(f'An error has occured: {e}')
-
+    if file not in objects['Contents']:
+        try:
+            s3_client.upload_file(file_to_upload, AWS_BUCKET_NAME, filename_s3)
+            print(f'{file} uploaded successfully')
+            logger.info(f'{file} uploaded successfully')
+            os.remove(file_to_upload)
+        except Exception as e:
+            print(f'An error has occured: {e}')
+            logger.error(f'An error has occured: {e}')
+    else:
+        print(f"{file} has already been uploaded")
+        logger.info(f"{file} has already been uploaded")
