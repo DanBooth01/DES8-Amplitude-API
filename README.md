@@ -3,7 +3,7 @@
 Two Python scripts that form a simple pipeline: the first pulls raw event data from the [Amplitude Export API](https://amplitude.com/docs/apis/analytics/export) and saves it locally, and the second uploads those files to an AWS S3 bucket.
 
 ```
-Amplitude Export API  ->  amplitude_export.py  ->  data/  ->  s3_upload.py  ->  S3 bucket
+Amplitude Export API  ->  Export.py  ->  data/  ->  Load.py  ->  S3 bucket
 ```
 
 ## Scripts
