@@ -20,7 +20,16 @@ params = {
     'end' : end_time
 }
 
+# List expected files
+expected_files = []
+first_date = datetime.now() + timedelta(days = -1)
+while first_date <= datetime.now():
+    expected_files.append(f"{first_date.strftime("%Y-%m-%d-%H")}#0.json")
+    first_date+= timedelta(hours=1)
 
+print(expected_files)
+
+    
 
 # Create folder to store data and a temp folder as an intermediate step (for now this is not temp)
 data_dir = 'data'
