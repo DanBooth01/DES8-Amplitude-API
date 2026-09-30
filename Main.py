@@ -20,5 +20,6 @@ data_dir = 'data'
 delay = 10
 max_retry = 5
 
-
+# Extract data into data folder
 extract_json(start_time, end_time, url, data_dir, max_retry, delay)
+

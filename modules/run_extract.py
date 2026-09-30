@@ -1,10 +1,8 @@
 ## import packages
 import requests
 import os
-from datetime import datetime, timedelta
 import time
 import logging
-from dotenv import load_dotenv
 import zipfile
 import gzip
 import io
