@@ -5,7 +5,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def load_to_S3(AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_BUCKET_NAME):
+def load_to_S3(AWS_ACCESS_KEY:str, AWS_SECRET_ACCESS_KEY:str, AWS_BUCKET_NAME:str):
+    """Call this function to load JSON files to S3
+
+    Args:
+        AWS_ACCESS_KEY (str): _description_
+        AWS_SECRET_ACCESS_KEY (str): _description_
+        AWS_BUCKET_NAME (str): _description_
+    """
 
 
     s3_client = boto3.client(
